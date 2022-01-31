@@ -67,7 +67,6 @@ public class Main {
 			    break;
 		default:	exit();
 		}
-		System.out.printf("%n%n%n");
 	}
 	
 //***************************************************************
@@ -76,8 +75,10 @@ public class Main {
 	
 	public static void deleteData(Statement stmt,int rollNo) throws SQLException{
 		System.out.printf("%n%n%n");
+		
 		ResultSet rs=stmt.executeQuery("delete from Student where id ="+rollNo);
 		System.out.printf("Result of Roll No. %d is Successfully deleted%n%n",rollNo);
+		
 		System.out.printf("%n%n%n");
 		mainMenu(stmt);
 		
@@ -90,8 +91,6 @@ public class Main {
 	public static void modifyData(Statement stmt, int rollNo) throws SQLException{
 		System.out.printf("%n%n%n");
 		Scanner sc = new Scanner(System.in);
-		
-		
 		
 		ResultSet rs=stmt.executeQuery("select * from Student where id ="+rollNo);
 		System.out.printf("Result of Roll No. %d are%n%n",rollNo);
@@ -182,7 +181,9 @@ public class Main {
 	
 	public static void displayAllResult(Statement stmt) throws SQLException{
 		System.out.printf("%n%n%n");
+		
 		ResultSet rs=stmt.executeQuery("select * from Student order by id");
+		
 		System.out.printf("Result of All Students%n%n");
 		System.out.printf("%-15s%-15s%-15s%-15s%-15s%-15s%-15s%n","Id","Name","Physics","Chemistry","Maths","Percentage","Grade");
 		
@@ -201,6 +202,7 @@ public class Main {
 	public static void insertData(Statement stmt) throws SQLException{
 		System.out.printf("%n%n%n");
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("Enter the Student Result");
 		System.out.println("Enter the Student Id");
 		int id = sc.nextInt();
