@@ -18,9 +18,12 @@ public class Main {
     		Connection con=DriverManager.getConnection(
     		"jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
     		//step3 create the statement object
+    		System.out.println();
     		Statement stmt=con.createStatement();
     		//step4 execute query
-    		
+    		System.out.println("------------------------------ WELCOME TO REPORT CARD MANAGEMENT ----------------------------------");
+    		System.out.println();
+    		System.out.println();
     		mainMenu(stmt);
     		con.close();
     		}
@@ -68,7 +71,26 @@ public class Main {
 		default:	exit();
 		}
 	}
+
+//***************************************************************
+//	THE BACK TO MAIN MENU FUNCTION OF PROGRAM 
+//****************************************************************
 	
+	public static void backToMainMenu(Statement stmt) throws SQLException{
+	    Scanner sc = new Scanner(System.in);
+	    System.out.println();
+		System.out.println("FOR MAIN MENU ENTER 1 ");
+		System.out.println("To EXIT ENTER ANY KEY ");
+		int ch = sc.nextInt();
+		
+		switch(ch)
+		{
+		case 1:	mainMenu(stmt); 
+				break;
+		default:	exit();
+		}
+	}
+		
 //***************************************************************
 //	function to Delete Result of any specific Roll No
 //****************************************************************
@@ -80,7 +102,7 @@ public class Main {
 		System.out.printf("Result of Roll No. %d is Successfully deleted%n%n",rollNo);
 		
 		System.out.printf("%n%n%n");
-		mainMenu(stmt);
+		backToMainMenu(stmt);
 		
 	}
 	
@@ -152,7 +174,7 @@ public class Main {
     		System.out.println(e);
     		}
 		System.out.printf("%n%n%n");
-		mainMenu(stmt);
+		backToMainMenu(stmt);
 		
 	}
 	
@@ -171,7 +193,7 @@ public class Main {
 			System.out.printf("%-15d%-15s%-15d%-15d%-15d%-15d%-15s%n", rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
 		}
 		System.out.printf("%n%n%n");
-		mainMenu(stmt);
+		backToMainMenu(stmt);
 		
 	}
 	
@@ -191,7 +213,7 @@ public class Main {
 			System.out.printf("%-15d%-15s%-15d%-15d%-15d%-15d%-15s%n", rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getString(7));
 		}
 		System.out.printf("%n%n%n");
-		mainMenu(stmt);
+		backToMainMenu(stmt);
 		
 	}
 	
@@ -253,7 +275,7 @@ public class Main {
     		System.out.println(e);
     		}
 		System.out.printf("%n%n%n");
-		mainMenu(stmt);
+		backToMainMenu(stmt);
         
 	}
 	public static void exit(){
